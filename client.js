@@ -71,6 +71,7 @@ function submitBlog(e){
   fetch('http://localhost:3000/blog', options)
   .then(r => r.json())
   .then(() => displayData(parseData))
+  .then(() => addEvent())
   .catch(console.warn)
   }
 
@@ -110,29 +111,34 @@ function displayData (data) {
           lens.setAttribute("class", "card-footer-item")
           lens.textContent = data.lenstype;
           metadataContainer.appendChild(lens)
-      // append inner div for text body
-      const caption = document.createElement("div")
-      caption.setAttribute("class", "content")
-      caption.textContent = data.text;
-      card.appendChild(caption)
-      // append comment bar label
-      const commentLabel = document.createElement("label")
-      commentLabel.setAttribute("for", "commentText")
-      commentLabel.textContent = "Leave a comment: "
-      card.appendChild(commentLabel)
-      // append comment box to card
-      const commentText = document.createElement("textarea")
-      commentText.setAttribute("name", "commentText")
-      commentText.setAttribute("maxlength", "200")
-      card.appendChild(commentText)
-      //append leave comment button
-      const commentButton = document.createElement("button")
-      commentButton.setAttribute("class", "button is-light is-success")
-      commentButton.setAttribute("id", "commentButton")
-      commentButton.textContent = "Comment"
-      card.appendChild(commentButton)
+          // append inner div for text body
+          const caption = document.createElement("div")
+          caption.setAttribute("class", "content")
+          caption.textContent = data.text;
+          card.appendChild(caption)
+          // append comment bar label
+          const commentLabel = document.createElement("label")
+          commentLabel.setAttribute("for", "commentText")
+          commentLabel.textContent = "Leave a comment: "
+          card.appendChild(commentLabel)
+          //append comment textbar
+          const commentText = document.createElement("textarea")
+          commentText.setAttribute("id", "commentText")
+          commentText.setAttribute("maxlength", "200")
+          card.appendChild(commentText)
+          //append leave comment button
+          const commentButton = document.createElement("button")
+          commentButton.setAttribute("class", "button is-success")
+          commentButton.setAttribute("id", "commentButton")
+          commentButton.textContent = "Comment"
+          card.appendChild(commentButton)
+          //append leave comment section
+          const commentSec = document.createElement("div")
+          commentSec.setAttribute("id", "commentSec")
+          card.appendChild(commentSec)
 
     results.append(card);
+
 }
 
 async function generatebase64() {
@@ -163,9 +169,43 @@ function submitComment(e){
   .catch(console.warn)
   }
 
+<<<<<<< HEAD
 function displayComment (data) {
   const results = document.querySelector(".results");
   const addComment = document.createElement("p");
   addComment.textContent = data.comment;
   results.appendChild(addComment)
 }
+=======
+function addEvent () {
+  const comment = document.getElementById("commentButton")
+  comment.addEventListener("click", submitComment)
+}
+
+
+function submitComment(e){
+  e.preventDefault();
+  const commentInput = document.getElementById("commentText")
+  const parseData = {
+    comment: commentInput.value
+  };
+
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(parseData)
+  };
+  console.log(options);
+
+  fetch('http://localhost:3000/blog', options)
+  .then(r => r.json())
+  .then(() => displayComment(parseData))
+  .catch(console.warn)
+}
+
+function displayComment (data) {
+  const section = document.querySelector("#commentSec")
+  const addComment = document.createElement("p")
+  addComment.textContent = data.comment
+  section.append(addComment)
+}
+>>>>>>> 930017a038c8f8d39ee6de655727c98c9fbe0db5

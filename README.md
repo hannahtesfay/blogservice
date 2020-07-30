@@ -3,13 +3,17 @@ A photography-centred blog, allowing anonymous posting and sharing. Built with J
 
 ## Installation & usage
 ### Installation
-- Clone or download the repo
-- In your command line, navigate to the server folder and run `npm install`
+- Clone or download the repo.
+- In your command line, navigate to the server folder and run `npm install`.
 ### Usage
-- In your command line, navigate to the server folder and run `npm run start` to run the server. Make sure you see the following message: `Express now departing from http://localhost:3000`
-- Open index.html in your browser
+- In your command line, navigate to the server folder and run `npm run start` to run the server. Make sure you see the following message: `Express now departing from http://localhost:3000`.
+- Open index.html in your browser.
 - 
 
 ## Technologies
+- JavaScript
+- HTML, CSS (using the [Bulma](https://bulma.io) framework)
+- Express
+
 ## Process
 ## Licence

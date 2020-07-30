@@ -1,9 +1,7 @@
 # Fotografiq
----
 A photography-centred blog, allowing anonymous posting and sharing. Built with JavaScript.
 
 ## Installation & usage
----
 ### Installation
 - Clone or download the repo
 - In your command line, navigate to the server folder and run `npm install`
